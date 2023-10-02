@@ -13,7 +13,7 @@
 
     <link rel='stylesheet' href="/css/style.css">
     <title>Absensi</title>
-    </head>
+</head>
 
 <body onload="getLocation()">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -47,7 +47,49 @@
         </div>
     </nav>
 
-    <p>admin koe</p>
+    <div class="container">
+        <div class="table-responsive small">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Jobdesk</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- get data for AdminController --}}
+
+
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>YK</td>
+                            <td>Kuli</td>
+                            <td>
+                                <a href="/admin/{{ $user->id }}" class="badge bg-warning bi bi-pencil"><span
+                                        data-feather="edit"></span></a>
+
+                                <form action="/admin/" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="badge bg-danger bi bi-trash border-0"
+                                        onclick="return confirm('Yakin dihapus?')">
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
 
 </html>
