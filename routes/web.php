@@ -18,16 +18,14 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('home', [
-        'title' => 'Halaman'
-    ]);
+    return view('home');
 });
 
 Route::get('/about', function () {
-    return view('about', [
-        'title' => 'Tentang'
-    ]);
+    return view('about');
 });
+
+Route::get('riwayat/{id}', [DashboardController::class, 'riwayat'])->middleware('auth')->name('dashboard.riwayat');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
@@ -45,5 +43,4 @@ Route::post('/masuk', [DashboardController::class, 'masuk']);
 
 Route::post('/keluar', [DashboardController::class, 'keluar']);
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
-
+Route::resource('/admin', AdminController::class)->middleware('auth');
