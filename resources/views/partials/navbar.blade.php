@@ -3,12 +3,6 @@
      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
- <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
- 
- <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
      <div class="container">
@@ -18,13 +12,14 @@
                      <a class="navbar-brand" href="">Absensi</a>
                      @can('admin')
                          <a class="navbar-brand" href="/admin">Admin</a>
+                         <a class="navbar-brand" href="/allRiwayat">Riwayat Pegawai</a>
                      @endcan
-                 @elseif (request()->is('/') || request()->is('about'))
+                 @elseif (request()->is('/') || request()->is('about') || request()->is('login') || request()->is('register'))
                      <li class="nav-item">
-                         <a class="nav-link" href="/">Halaman</a>
+                         <a class="nav-link {{ $title === 'Halaman' ? 'active' : '' }}" href="/">Halaman</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="/about">Tentang</a>
+                         <a class="nav-link {{ $title === 'Tentang' ? 'active' : '' }}" href="/about">Tentang</a>
                      </li>
                  @else
                      <a class="navbar-brand bi bi-arrow-left" href="/dashboard">Kembali</a>

@@ -6,8 +6,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
     <link rel='stylesheet' href="/css/style.css">
     <title>Absensi</title>
 </head>
@@ -38,6 +36,7 @@
                 <form class="myForm" action="/masuk" method="post">
                     @csrf
                     <input type="hidden" value="" name="latitude">
+                    <input type="hidden" value="{{ auth()->user()->name }}" name="name">
                     <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
                     <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
                     <input type="hidden" value="" name="longitude">
@@ -46,6 +45,7 @@
                 <form class="myForm2" action="/keluar" method="post">
                     @csrf
                     <input type="hidden" value="" name="latitude2">
+                    <input type="hidden" value="{{ auth()->user()->name }}" name="name">
                     <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
                     <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
                     <input type="hidden" value="" name="longitude2">
