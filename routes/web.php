@@ -29,7 +29,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('riwayat/{id}', [DashboardController::class, 'riwayat'])->middleware('auth')->name('dashboard.riwayat');
+Route::get('riwayat/{id}', [DashboardController::class, 'riwayat'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
@@ -43,10 +43,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('allRiwayat', [DashboardController::class, 'allRiwayat'])->middleware('auth')->name('dashboard.allRiwayat');
+Route::get('allRiwayat', [DashboardController::class, 'allRiwayat'])->middleware('auth');
 
 Route::post('/masuk', [DashboardController::class, 'masuk']);
 
 Route::post('/keluar', [DashboardController::class, 'keluar']);
 
-Route::resource('/admin', AdminController::class)->middleware('auth');
+Route::resource('admin', AdminController::class)->middleware('auth')->name('admin', 'index');

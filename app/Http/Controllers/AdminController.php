@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use DataTables;
 
 class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.index', [
-            'users' => User::all()
-        ]);
+        if ($request->ajax()) {
+            $data = User::select('*');
+            return \Yajra\DataTables\Facades\DataTables::of($data)
+                ->addIndexColumn()
+                ->make(true);
+        }
+
+        return view('admin.index');
     }
 
     /**
