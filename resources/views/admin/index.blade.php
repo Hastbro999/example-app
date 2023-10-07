@@ -26,7 +26,7 @@
     <title>Absensi</title>
 </head>
 
-<body onload="getLocation()">
+<body>
     @include('partials.navbar')
 
     <div class="container">
@@ -37,6 +37,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
             </table>
@@ -45,7 +46,6 @@
 
 </body>
 
-{{-- buat js datatables yajra --}}
 <script type="text/javascript">
     $(function() {
         var table = $('.table').DataTable({
@@ -65,6 +65,10 @@
                     data: 'email',
                     name: 'email'
                 },
+                {
+                    data: 'action',
+                    name: 'action'
+                }
             ]
         });
     });

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <link rel='stylesheet' href="/css/pagination.css">
+<link rel='stylesheet' href="/css/pagination.css">
+
+
 <head>
     <title>Riwayat Data</title>
 </head>
@@ -45,6 +47,9 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="container">
+        {{ $masuk->links('pagination::bootstrap-5') }}
     </div>
 </body>
 

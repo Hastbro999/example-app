@@ -18,6 +18,12 @@ class AdminController extends Controller
             $data = User::select('*');
             return \Yajra\DataTables\Facades\DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '
+                    <a href="' . route('admin.edit', $row->id) . '" class="btn btn-warning btn-sm bi bi-pen"></a>
+                    <a href="' . route('admin.destroy', $row->id) . '" class="edit btn btn-danger btn-sm bi bi-trash"></a>';
+                    return $btn;
+                })
                 ->make(true);
         }
 

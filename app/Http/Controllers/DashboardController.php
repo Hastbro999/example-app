@@ -15,12 +15,12 @@ class DashboardController extends Controller
     public function allRiwayat()
     {
         $getDataMasuk = DB::table('tb_data_masuk')
-            ->get();
+            ->paginate(3);
 
         $getDataKeluar = DB::table('tb_data_keluar')
-            ->get();
+            ->paginate(3);
 
-        return view('dashboard.allRiwayat', compact('getDataMasuk', 'getDataKeluar'));
+        return view('dashboard.allRiwayat', ['getDataMasuk' => $getDataMasuk, 'getDataKeluar' => $getDataKeluar]);
     }
 
     public function masuk(Request $request)
@@ -80,10 +80,12 @@ class DashboardController extends Controller
     {
         $masuk = DB::table('tb_data_masuk')
             ->where('id_user', $id)
-            ->get();
+            ->orderBy('tgl_masuk', 'desc')
+            ->paginate(1);
         $keluar = DB::table('tb_data_keluar')
             ->where('id_user', $id)
-            ->get();
-        return view('dashboard.riwayat', compact('masuk', 'keluar'));
+            ->orderBy('tgl_keluar', 'desc')
+            ->paginate(1);
+        return view('dashboard.riwayat', ['masuk' => $masuk, 'keluar' => $keluar]);
     }
 }
