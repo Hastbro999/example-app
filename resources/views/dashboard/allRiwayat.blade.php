@@ -54,7 +54,7 @@
             </table>
         </div>
     </div>
-    <div class="container">
+    <div class="d-flex justify-content-center">
         {{ $getDataMasuk->links('pagination::bootstrap-5') }}
     </div>
 </body>
