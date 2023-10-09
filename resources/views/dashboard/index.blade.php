@@ -32,25 +32,28 @@
             <a href="/riwayat/{{ auth()->user()->id }}"> <button type="button"
                     class="btn btn-primary btn-lg px-4 gap-3 mb-3">Riwayat</button>
             </a>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <form class="myForm" action="/masuk" method="post">
-                    @csrf
-                    <input type="hidden" value="" name="latitude">
-                    <input type="hidden" value="{{ auth()->user()->name }}" name="name">
-                    <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
-                    <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
-                    <input type="hidden" value="" name="longitude">
-                    <button class="btn btn-primary btn-lg px-4 gap-3" id="masuk" type="submit">Masuk</button>
-                </form>
-                <form class="myForm2" action="/keluar" method="post">
-                    @csrf
-                    <input type="hidden" value="" name="latitude2">
-                    <input type="hidden" value="{{ auth()->user()->name }}" name="name">
-                    <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
-                    <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
-                    <input type="hidden" value="" name="longitude2">
-                    <button class="btn btn-primary btn-lg px-4 gap-3" id="keluar" type="submit">Keluar</button>
-                </form>
+            <div class="d-grid gap-2 justify-content-center">
+                <div class="d-flex" style="margin: auto">
+                    <form class="myForm" action="/masuk" method="post">
+                        @csrf
+                        <input type="hidden" value="" name="latitude">
+                        <input type="hidden" value="{{ auth()->user()->name }}" name="name">
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
+                        <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
+                        <input type="hidden" value="" name="longitude">
+                        <button class="btn btn-primary btn-lg px-4 gap-3" id="masuk" type="submit">Masuk</button>
+                    </form>
+                    &nbsp;
+                    <form class="myForm2" action="/keluar" method="post">
+                        @csrf
+                        <input type="hidden" value="" name="latitude2">
+                        <input type="hidden" value="{{ auth()->user()->name }}" name="name">
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
+                        <input type="hidden" value="{{ date('Y-m-d') }}" name="tgl">
+                        <input type="hidden" value="" name="longitude2">
+                        <button class="btn btn-primary btn-lg px-4 gap-3" id="keluar" type="submit">Keluar</button>
+                    </form>
+                </div>
                 <script type="text/javascript">
                     function getLocation() {
                         if (navigator.geolocation) {
@@ -67,8 +70,8 @@
                             `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}&hl=es;z=14&output=embed`;
                     }
                 </script>
-                <div style="position: absolute; top:360px">
-                    <iframe id="coordinates" width="400px" height="300px"></iframe>
+                <div class="iframe-container">
+                    <iframe id="coordinates" allowfullscreen frameborder="0" width="100%" height="100%"></iframe>
                 </div>
             </div>
         </div>

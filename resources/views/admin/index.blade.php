@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,12 +15,12 @@
     <title>Absensi</title>
 </head>
 
-<body onload="getLocation()">
+<body>
     @include('partials.navbar')
 
     <div class="container">
-        <div class="table-responsive small">
-            <table class="table table-striped table-sm">
+        <div class="table-responsive">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -41,14 +41,14 @@
                                 <td>{{ $user->alamat }}</td>
                                 <td>{{ $user->job }}</td>
                                 <td>
-                                    <a href="/admin/{{ $user->id }}/edit"
-                                        class="badge bg-warning bi bi-pencil"><span data-feather="edit"></span></a>
-
+                                    <a href="/admin/{{ $user->id }}/edit" class="btn btn-warning btn-sm"><i
+                                            class="bi bi-pencil"></i></a>
                                     <form action="/admin/{{ $user->id }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="badge bg-danger bi bi-trash border-0"
-                                            onclick="return confirm('Yakin dihapus?')">
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Yakin dihapus?')"><i class="bi bi-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -62,6 +62,9 @@
             </table>
         </div>
     </div>
-</body>
 
-</html>
+    <!-- Bootstrap JS and jQuery (you need to include them) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+piMS/x3t5pZKl/o5KLZl5m/Kz5FJ5M5q4z6pW5Fk5Ca5bFb" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-Np0+
