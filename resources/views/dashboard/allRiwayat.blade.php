@@ -68,55 +68,59 @@
 </head>
 
 <body>
-    @include('partials.navbar')
+@include('partials.navbar')
 
-    <div class="container">
-        <div class="column">
-            <h2>Riwayat Data Masuk</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Tanggal Masuk</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($getDataMasuk as $dataMasuk)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataMasuk->name_user }}</td>
-                            <td>{{ $dataMasuk->tgl_masuk }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="column">
-            <h2>Riwayat Data Keluar</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Tanggal Keluar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($getDataKeluar as $dataKeluar)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataKeluar->name_user }}</td>
-                            <td>{{ $dataKeluar->tgl_keluar }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+<div class="container">
+    <div class="column">
+        <h2>Riwayat Data Masuk</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Tanggal Masuk</th>
+                <th>Latidute & Longitude</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($getDataMasuk as $dataMasuk)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $dataMasuk->name_user }}</td>
+                <td>{{ $dataMasuk->tgl_masuk }}</td>
+                <td>{{ $dataMasuk->latitude }} & {{ $dataMasuk->longitude }}</td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
-    <div class="d-flex justify-content-center">
-        {{ $getDataMasuk->links('pagination::bootstrap-5') }}
+    <div class="column">
+        <h2>Riwayat Data Keluar</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Tanggal Keluar</th>
+                <th>Latidute & Longitude</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($getDataKeluar as $dataKeluar)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $dataKeluar->name_user }}</td>
+                <td>{{ $dataKeluar->tgl_keluar }}</td>
+                <td>{{ $dataKeluar->latitude_keluar }} & {{ $dataKeluar->longitude_keluar }}</td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
+</div>
+<div class="d-flex justify-content-center">
+    {{ $getDataMasuk->links('pagination::bootstrap-5') }}
+</div>
 </body>
 
 </html>

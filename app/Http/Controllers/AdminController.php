@@ -52,19 +52,23 @@ class AdminController extends Controller
         return view('admin.edit', compact('value'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'alamat' => 'required|max:255',
+            'job' => 'required',
+        ]);
+
         $value = User::findOrFail($id);
         DB::table('users')->where('id', $id)->update([
             'name' => $request->name,
-            'email' => $request->email,
             'alamat' => $request->alamat,
             'job' => $request->job,
         ]);
-        return redirect()->route('admin.index');
+
+        return redirect()->route('admin.index')->with('success', 'User updated successfully!');
     }
 
     /**

@@ -67,51 +67,51 @@
 </head>
 
 <body>
-    @include('partials.navbar')
+@include('partials.navbar')
 
-    <div class="container">
-        <div class="column">
-            <h2>Riwayat Data Masuk</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal Masuk</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($masuk as $dataMasuk)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataMasuk->tgl_masuk }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="column">
-            <h2>Riwayat Data Keluar</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal Keluar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($keluar as $dataKeluar)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataKeluar->tgl_keluar }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+<div class="container">
+    <div class="column">
+        <h2>Riwayat Data Masuk</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal Masuk</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($masuk as $dataMasuk)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $dataMasuk->tgl_masuk }}</td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
-    <div class="d-flex justify-content-center">
-        {{ $masuk->links('pagination::bootstrap-5') }}
+    <div class="column">
+        <h2>Riwayat Data Keluar</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal Keluar</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($keluar as $dataKeluar)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $dataKeluar->tgl_keluar }}</td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
+</div>
+<div class="d-flex justify-content-center">
+    {{ $masuk->links('pagination::bootstrap-5') }}
+</div>
 </body>
 
 </html>
