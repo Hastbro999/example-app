@@ -49,4 +49,6 @@ Route::post('/masuk', [DashboardController::class, 'masuk']);
 
 Route::post('/keluar', [DashboardController::class, 'keluar']);
 
+Route::get('/dashboard/riwayat/{id}', [DashboardController::class, 'riwayat'])->name('riwayat');
+
 Route::resource('admin', AdminController::class)->middleware('auth')->name('admin', 'index');
