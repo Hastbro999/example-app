@@ -146,12 +146,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($masuk->isEmpty())
+                            <tr>
+                                <td colspan="2">Data tidak ditemukan.</td>
+                            </tr>
+                            @else
                             @foreach ($masuk as $dataMasuk)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dataMasuk->tgl_masuk }}</td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div class="pagination">
@@ -160,7 +166,7 @@
                 </div>
 
                 <!-- Riwayat Data Keluar -->
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-left: -20px;border-left: white solid;">
                     <h2>Riwayat Data Keluar</h2>
                     <table>
                         <thead>
@@ -170,12 +176,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($keluar->isEmpty())
+                            <tr>
+                                <td colspan="2">Data tidak ditemukan.</td>
+                            </tr>
+                            @else
                             @foreach ($keluar as $dataKeluar)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dataKeluar->tgl_keluar }}</td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div class="pagination">

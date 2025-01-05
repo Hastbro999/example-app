@@ -22,11 +22,12 @@
     </style>
 </head>
 
-<body onload="getLocation()">
+<!-- Masukan latitude dan location untuk titik lokasi jika ingin default lokasi dihapus lati dan long-->
+<body onload="getLocation(-7.871586114722994, 110.42632987165258)">
     @include('partials.navbar')
 
     <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://drive.google.com/file/d/1YO14lJ9S7IJrmHUIj7micn9CflgS7H-u/view?usp=sharing" alt="Error" width="72" height="57">
+        <img class="d-block mx-auto mb-4" src="https://i.ibb.co.com/jv3mP5h/pupr.jpg" alt="Error" width="72" height="57">
         <div class="col-lg-6 mx-auto">
             @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -45,8 +46,8 @@
             </a>
             <div class="d-grid gap-2 justify-content-center">
                 <div class="d-flex" style="margin: auto">
-                <form class="myForm" action="/masuk" method="post" onsubmit="disableButton('masuk'); return validateDistance();">
-                @csrf
+                    <form class="myForm" action="/masuk" method="post" onsubmit="disableButton('masuk'); return validateDistance();">
+                        @csrf
                         <input type="hidden" value="" name="latitude">
                         <input type="hidden" value="{{ auth()->user()->name }}" name="name">
                         <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
@@ -56,7 +57,7 @@
                     </form>
                     &nbsp;
                     <form class="myForm2" action="/keluar" method="post" onsubmit="disableButton('keluar'); return validateDistance();">
-                    @csrf
+                        @csrf
                         <input type="hidden" value="" name="latitude2">
                         <input type="hidden" value="{{ auth()->user()->name }}" name="name">
                         <input type="hidden" value="{{ auth()->user()->id }}" name="id_user">
@@ -82,18 +83,24 @@
                         lng: 110.26894 // Merubah lokasi kantor longitude
                     };
 
-                    function getLocation() {
-                        if (navigator.geolocation) {
+                    function getLocation(customLat, customLng) {
+                        if (customLat !== undefined && customLng !== undefined) {
+                            showPosition({
+                                coords: {
+                                    latitude: customLat,
+                                    longitude: customLng
+                                }
+                            });
+                        } else if (navigator.geolocation) {
+                            // Jika tidak, gunakan geolocation
                             navigator.geolocation.getCurrentPosition(showPosition);
                         } else {
                             alert("Geolocation is not supported by this browser.");
                         }
                     }
 
-
                     // PENTING UNTUK MEMBUAT RADIUS KANTOR
                     function showPosition(position) {
-                        // Revisi untuk merubah lokasi sekarang
                         var lat = position.coords.latitude;
                         var lng = position.coords.longitude;
 
@@ -118,7 +125,7 @@
                             color: 'blue',
                             fillColor: '#30f',
                             fillOpacity: 0.5,
-                            radius: 200 
+                            radius: 200
                         }).addTo(map);
 
                         // Bind popup to marker
@@ -143,18 +150,23 @@
 
                     // PENTING!!!
                     function calculateDistance(lat1, lng1, lat2, lng2) {
-                        const R = 6371e3; // Earth radius in meters
+                        const R = 6371e3; // Jari-jari bumi dalam meter
+
+                        // Mengkonversi derajat ke radian
                         const φ1 = lat1 * Math.PI / 180;
                         const φ2 = lat2 * Math.PI / 180;
                         const Δφ = (lat2 - lat1) * Math.PI / 180;
                         const Δλ = (lng2 - lng1) * Math.PI / 180;
 
+                        // Haversine formula
                         const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
                             Math.cos(φ1) * Math.cos(φ2) *
                             Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
                         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-                        const distance = R * c; // in meters
+                        // Menghitung jarak
+                        const distance = R * c; // Jarak dalam meter
+
                         return distance;
                     }
                 </script>
