@@ -23,7 +23,7 @@
 </head>
 
 <!-- Masukan latitude dan location untuk titik lokasi jika ingin default lokasi dihapus lati dan long-->
-<body onload="getLocation(-7.871586114722994, 110.42632987165258)">
+<body onload="getLocation(-7.71904, 110.26894)">
     @include('partials.navbar')
 
     <div class="px-4 py-5 my-5 text-center">
