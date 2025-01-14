@@ -126,7 +126,6 @@
     @include('partials.navbar')
 
     <div class="container">
-        <!-- Filter Form -->
         <form class="filter-form col-md-12" method="GET" action="{{ url('/allRiwayat') }}">
             <label for="start_date">Tanggal Mulai:</label>
             <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}">
