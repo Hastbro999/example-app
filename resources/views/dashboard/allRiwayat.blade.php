@@ -128,62 +128,64 @@
     <div class="container">
         <!-- Filter Form -->
         <form class="filter-form col-md-12" method="GET" action="{{ url('/allRiwayat') }}">
-                <label for="start_date">Tanggal Mulai:</label>
-                <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}">
-                <label for="end_date">Tanggal Akhir:</label>
-                <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}">
-                <label for="search">Cari Nama:</label>
-                <input type="text" id="search" name="search" placeholder="Nama Pegawai" value="{{ request('search') }}">
-                <button type="submit">Filter</button>
-                <!-- Clear Filter Button -->
-                <a href="{{ url('/allRiwayat') }}" class="clear-button">Clear Filter</a>
+            <label for="start_date">Tanggal Mulai:</label>
+            <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}">
+            <label for="end_date">Tanggal Akhir:</label>
+            <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}">
+            <label for="search">Cari Nama:</label>
+            <input type="text" id="search" name="search" placeholder="Nama Pegawai" value="{{ request('search') }}">
+            <button type="submit">Filter</button>
+            <a href="{{ url('/allRiwayat') }}" class="clear-button">Clear Filter</a>
 
-            <div class="col-md-6">
-                <h2>Riwayat Data Masuk</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Tanggal Masuk</th>
-                            <th>Latidute & Longitude</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($getDataMasuk as $dataMasuk)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataMasuk->name_user }}</td>
-                            <td>{{ $dataMasuk->tgl_masuk }}</td>
-                            <td>{{ $dataMasuk->latitude }} & {{ $dataMasuk->longitude }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <div class="columns">
 
-            <div class="col-md-6">
-                <h2>Riwayat Data Keluar</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Tanggal Keluar</th>
-                            <th>Latidute & Longitude</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($getDataKeluar as $dataKeluar)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $dataKeluar->name_user }}</td>
-                            <td>{{ $dataKeluar->tgl_keluar }}</td>
-                            <td>{{ $dataKeluar->latitude_keluar }} & {{ $dataKeluar->longitude_keluar }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="col-md-6">
+                    <h2>Riwayat Data Masuk</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Tanggal Masuk</th>
+                                <th>Latidute & Longitude</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($getDataMasuk as $dataMasuk)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $dataMasuk->name_user }}</td>
+                                <td>{{ $dataMasuk->tgl_masuk }}</td>
+                                <td>{{ $dataMasuk->latitude }} & {{ $dataMasuk->longitude }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-6" style="margin-left: -20px;border-left: white solid;">
+                    <h2>Riwayat Data Keluar</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Tanggal Keluar</th>
+                                <th>Latidute & Longitude</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($getDataKeluar as $dataKeluar)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $dataKeluar->name_user }}</td>
+                                <td>{{ $dataKeluar->tgl_keluar }}</td>
+                                <td>{{ $dataKeluar->latitude_keluar }} & {{ $dataKeluar->longitude_keluar }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </form>
     </div>

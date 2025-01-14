@@ -23,11 +23,11 @@ class DashboardController extends Controller
         $queryMasuk = DB::table('tb_data_masuk');
 
         if ($startDate) {
-            $queryMasuk->where('tgl_masuk', '>=', $startDate);
+            $queryMasuk->whereDate('tgl_masuk', '>=', $startDate);
         }
 
         if ($endDate) {
-            $queryMasuk->where('tgl_masuk', '<=', $endDate);
+            $queryMasuk->whereDate('tgl_masuk', '<=', $endDate);
         }
 
         if ($search) {
@@ -41,11 +41,11 @@ class DashboardController extends Controller
         $queryKeluar = DB::table('tb_data_keluar');
 
         if ($startDate) {
-            $queryKeluar->where('tgl_keluar', '>=', $startDate);
+            $queryKeluar->whereDate('tgl_keluar', '>=', $startDate);
         }
 
         if ($endDate) {
-            $queryKeluar->where('tgl_keluar', '<=', $endDate);
+            $queryKeluar->whereDate('tgl_keluar', '<=', $endDate);
         }
 
         if ($search) {
