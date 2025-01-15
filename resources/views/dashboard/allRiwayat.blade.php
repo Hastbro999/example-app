@@ -150,6 +150,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($getDataMasuk->isEmpty())
+                            <tr>
+                                <td colspan="6">Data tidak ditemukan.</td>
+                            </tr>
                             @foreach ($getDataMasuk as $dataMasuk)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -158,6 +162,7 @@
                                 <td>{{ $dataMasuk->latitude }} & {{ $dataMasuk->longitude }}</td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -174,6 +179,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($getDataKeluar->isEmpty())
+                            <tr>
+                                <td colspan="6">Data tidak ditemukan.</td>
+                            </tr>
                             @foreach ($getDataKeluar as $dataKeluar)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -182,6 +191,8 @@
                                 <td>{{ $dataKeluar->latitude_keluar }} & {{ $dataKeluar->longitude_keluar }}</td>
                             </tr>
                             @endforeach
+                            @endif
+
                         </tbody>
                     </table>
                 </div>
